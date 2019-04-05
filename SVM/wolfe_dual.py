@@ -34,11 +34,7 @@ print("A=\n",A)
 
 alpha=cp.Variable(2)
 
-sec_constr=0.0
-for i in range(n):
-	sec_constr=sec_constr+y[i]*alpha[i]
-
-constraints=[alpha>=np.zeros(2),sec_constr==0]
+constraints=[alpha>=np.zeros(2),y@alpha==0]
 prob = cp.Problem(cp.Maximize( -0.5*cp.quad_form(alpha,A) +one.T@alpha), constraints)
 prob.solve()
 

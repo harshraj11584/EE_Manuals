@@ -7,9 +7,7 @@ d= Variable()
 w = Variable((n,1),nonneg=False)
 f = 0.5*sum([(w[i]**2) for i in range(n)])
 obj = Minimize(f)
-constraints = []
-for i in range(n):
-	constraints.append(y[i]* (x[i].transpose() * w + d) >=1)
+constraints = [y[i]* (x[i].transpose() * w + d) >=1 for i in range(n)]
 Problem(obj, constraints).solve()
 print("Minimum value of Cost function= ", f.value)
 print("Minima is at w = \n",w.value)
