@@ -26,7 +26,7 @@ a21 = -1*a12.T
 a22 = np.zeros((n,n))
 #print("a22.shape",a22.shape)
 
-a23 = sum(y).reshape((2,1))
+a23 = sum(y).reshape((n,1))
 #print("a23.shape",a23.shape)
 #Compare Equation (4.13) with Ax=b and solve
 
