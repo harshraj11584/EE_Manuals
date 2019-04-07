@@ -22,7 +22,7 @@ w = Variable((p,1),nonneg=False)
 #objective function 
 obj = Minimize(0.5*square(norm(w)))
 
-#constraints
+#constraints in matrix form
 constraints = [((x@y).T)@w + y@d_v>= np.ones((n,1))]
 
 Problem(obj, constraints).solve()

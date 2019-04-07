@@ -1,5 +1,3 @@
-#Solving a Quadtratic Program in cvxpy
-
 import cvxpy as cp
 import numpy as np
 

@@ -5,6 +5,7 @@ x = np.array([
 	[ 2.0, 0.8 ] , 
 	[ 1.0, -0.6 ]
 	])
+
 # y is matrix with labels stacked diagonally
 y = np.diag([1,-1])
 
@@ -28,14 +29,13 @@ a22 = np.zeros((n,n))
 
 a23 = sum(y).reshape((n,1))
 #print("a23.shape",a23.shape)
-#Compare Equation (4.13) with Ax=b and solve
+#Compare Eqn (4.13) with Ax=b and solve
 
 a31=np.zeros((1,n))
 #print("a31.shape",a31.shape)
 
 a32=a23.T
 #print("a32.shape",a32.shape)
-
 
 a33=np.zeros((1,1))
 #print("a33.shape",a33.shape)
@@ -49,7 +49,6 @@ A = np.block([
 print("\nA=\n",A)
 b = np.array([[0],[0],[1],[1],[0]])
 x = np.matmul( np.linalg.inv(A), b )
-
 
 w, alpha, d = x[:2,:], x[2:4,:], x[4,:]
 print("\nw=\n",w,"\nalpha=\n",alpha,"\nd=\n",d)
