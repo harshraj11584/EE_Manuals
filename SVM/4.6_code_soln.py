@@ -1,49 +1,39 @@
 import numpy as np
 
-x=np.array([
-	[2,0.8],
-	[1,-0.6]
+# x is array of datapoints stacked column wise [x1, x2, ... , xn]
+x = np.array([
+	[ 2.0, 0.8 ] , 
+	[ 1.0, -0.6 ]
 	])
-y = np.array([[1],[-1]])
+# y is matrix with labels stacked diagonally
+y = np.diag([1,-1])
 
-n=2 	#number of datapoints
+n=2 #no of datapoints
+p=2 #no of parameters of each datapoint
 
 a11 = np.eye(n)
 #print("a11.shape",a11.shape)
 
-a12 = []
-for i in range(n):
-	a12.append(-1*y[i]*x[:,i])
-a12=np.array(a12).T
+a12=-1.0*x@y
 #print("a12.shape",a12.shape)
 
 a13 = np.zeros((n,1))
 #print("a13.shape",a13.shape)
 
-a21=[]
-for i in range(n):
-	a21.append(y[i]*x[:,i].T)
-a21=np.array(a21)
+a21 = -1*a12.T
 #print("a21.shape",a21.shape)
 
 a22 = np.zeros((n,n))
 #print("a22.shape",a22.shape)
 
-a23 = []
-for i in range(n):
-	a23.append(y[i,:])
-a23=np.array(a23)
+a23 = sum(y).reshape((2,1))
 #print("a23.shape",a23.shape)
 #Compare Equation (4.13) with Ax=b and solve
 
 a31=np.zeros((1,n))
 #print("a31.shape",a31.shape)
 
-a32=[]
-for i in range(n):
-	a32.append([y[i,0]])
-a32=np.array(a32)
-a32=a32.T
+a32=a23.T
 #print("a32.shape",a32.shape)
 
 
@@ -56,7 +46,7 @@ A = np.block([
 	[ a31, a32,	a33 ]
 	])
 
-print(A)
+print("\nA=\n",A)
 b = np.array([[0],[0],[1],[1],[0]])
 x = np.matmul( np.linalg.inv(A), b )
 
