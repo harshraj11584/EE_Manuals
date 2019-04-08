@@ -7,8 +7,8 @@ def plot_point(A,s):
 
 def plot_line_from_eqn(slope, intercept , labelstr):
     axes = plt.gca()
-    axes.set_xlim([-12,5])
-    axes.set_ylim([-10,10])
+    axes.set_xlim([-12,14])
+    axes.set_ylim([-12,14])
     x_vals = np.array(axes.get_xlim())*1000
     y_vals = intercept + slope * x_vals
     plt.plot(x_vals, y_vals, label=labelstr)
