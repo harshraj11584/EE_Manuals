@@ -1,33 +1,30 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from funcs import *
+#setting up plot
+ax = plt.figure().add_subplot(111, aspect='equal')
 
-def normal_vector(v):
-	#returns normal vector of line joining A and B
-	omat = np.array([[0,1],[-1,0]])
-	return np.matmul(omat,v)
+#translation function
+def translate(point, translation_vector):
+	return point+translation_vector
 
-def plot_point(A,s):
-	plt.plot(A[0],A[1],'o')
-	plt.annotate(s,xy=(A[0],A[1]))
+#defining points
+R = np.array([1,4])
 
-def plot_line_bw_points(A,B,s):
-	plt.plot([A[0],B[0]],[A[1],B[1]],label=s)
+#defining translation vector
+t_vec = np.array([2,0])
 
-def plot_line_from_eqn(slope, intercept , labelstr):
-    axes = plt.gca()
-    axes.set_xlim([-10,10])
-    axes.set_ylim([-10,10])
-    x_vals = np.array(axes.get_xlim())*1000
-    y_vals = intercept + slope * x_vals
-    plt.plot(x_vals, y_vals, label=labelstr)
+#translating R
+S = translate(R,t_vec)
 
-R = np.array([[1],[4]])
-S = R + np.array([[2],[0]])
-
+#plotting points
 plot_point(R,'R (Original)')
 plot_point(S,'S (Translated)')
-plot_line_bw_points(R,S,'Line RS')
 
+#plotting line joining R and S
+plot_line_segment(R,S,'RS')
+
+ax.plot()
 plt.xlabel('$x$');plt.ylabel('$y$')
 plt.legend(loc='best');plt.grid()
 plt.show()

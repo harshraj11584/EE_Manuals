@@ -1,40 +1,36 @@
-import matplotlib.pyplot as plt
 import numpy as np
+import math
+import matplotlib.pyplot as plt
+from funcs import *
+#setting up plot
+fig = plt.figure()
+ax = fig.add_subplot(111, aspect='equal')
 
-def plot_point(A,s):
-	plt.plot(A[0],A[1],'o')
-	plt.annotate(s,xy=(A[0],A[1]))
+#defining points
+P = np.array([1,7])
 
-def plot_line_from_eqn(slope, intercept , labelstr):
-    axes = plt.gca()
-    axes.set_xlim([-12,14])
-    axes.set_ylim([-12,14])
-    x_vals = np.array(axes.get_xlim())*1000
-    y_vals = intercept + slope * x_vals
-    plt.plot(x_vals, y_vals, label=labelstr)
+#defining coeff vector of parabola P
+coeff_P = np.array([1,0,6])
 
-a=[]
-b=[]
-x=-3
-while(x<=3):
-    y=(x**2+6)
-    a.append(x)
-    b.append(y)
-    x= x+0.01
-fig= plt.figure()
-ax=fig.add_subplot(111)
-ax.plot(a,b,label="Parabola C")
+#defining tangent line
+tl = np.array([2,-1,-5])
 
-P = np.array([[1],[7]])
+#defining centre and radius of Circle C1
+c1=np.array([-8,-6])
+r1=5**0.5
+
+#plotting points
 plot_point(P,"P")
-c2=np.array([-8,-6])
-r2=5**0.5
-ax.add_patch(plt.Circle(c2, r2, color='b', alpha=1,fill=False,label="Circle C"))
 
-plot_line_from_eqn(slope=2, intercept=5, labelstr="Tangent Line")
+#plotting parabola P
+plot_parabola(coeff_P,labelstr="Parabola P")
 
-ax.set_aspect('equal', adjustable='datalim')
-ax.plot()   #Causes an autoscale update.
+#plotting tangent line
+plot_line(tl, labelstr="Tangent Line")
+
+#plotting circle C1
+plot_circle(ax,c1,r1,"Circle C1")
+
 plt.xlabel('$x$');plt.ylabel('$y$')
-plt.legend(loc='best');plt.grid()
+plt.legend(loc='upper right');plt.grid()
 plt.show()

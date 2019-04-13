@@ -1,42 +1,33 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from funcs import *
+#setting up plot
+ax = plt.figure().add_subplot(111, aspect='equal')
 
-def normal_vector(v):
-	#returns normal vector of line joining A and B
-	omat = np.array([[0,1],[-1,0]])
-	return np.matmul(omat,v)
+#defining points
+P = np.array([4.0,1.0])
 
-def plot_point(A,s):
-	plt.plot(A[0],A[1],'o')
-	plt.annotate(s,xy=(A[0],A[1]))
+#defining lines
+L = np.array([1,-1,0])
 
-def plot_line_bw_points(A,B,s):
-	plt.plot([A[0],B[0]],[A[1],B[1]],label=s)
+#finding reflection
+R = reflection(point=P,line=L)
 
-def plot_line_from_eqn(slope, intercept , labelstr):
-    axes = plt.gca()
-    axes.set_xlim([-10,10])
-    axes.set_ylim([-10,10])
-    x_vals = np.array(axes.get_xlim())*1000
-    y_vals = intercept + slope * x_vals
-    plt.plot(x_vals, y_vals, label=labelstr)
-
-P = np.array([[4],[1]])
-n = np.array([[1],[-1]])
-m = normal_vector(n)
-c = 0
-
-R = 2 * ( ( (m@m.T - n@n.T) / (m.T @ m + n.T @ n) ) @ P + c*n)
-
-print("n=\n",n)
-print("m=\n",m)
+#printing points
+print("P=\n",P)
 print("R=\n",R)
 
-plot_line_from_eqn(slope=1, intercept=0, labelstr="Line L")
+#plotting points
 plot_point(P,'P')
 plot_point(R,'R')
-plot_line_bw_points(P,R,"Perpendicular Line")
 
+#plotting lines
+plot_line(L,"L")
+
+#plotting Perpendicular Line
+plot_line_segment(P,R,"Perpendicular Line")
+
+ax.plot()
 plt.xlabel('$x$');plt.ylabel('$y$')
 plt.legend(loc='best');plt.grid()
 plt.show()

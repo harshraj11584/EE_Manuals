@@ -1,34 +1,28 @@
-import matplotlib.pyplot as plt
 import numpy as np
+import math
+import matplotlib.pyplot as plt
+from funcs import *
+#setting up plot
+fig = plt.figure()
+ax = fig.add_subplot(111, aspect='equal')
 
-def plot_point(A,s):
-	plt.plot(A[0],A[1],'o')
-	plt.annotate(s,xy=(A[0],A[1]))
+#defining points
+P = np.array([1,7])
 
-def plot_line_from_eqn(slope, intercept , labelstr):
-    axes = plt.gca()
-    axes.set_xlim([-4,3])
-    axes.set_ylim([5,12])
-    x_vals = np.array(axes.get_xlim())*1000
-    y_vals = intercept + slope * x_vals
-    plt.plot(x_vals, y_vals, label=labelstr)
+#defining coeff vector of parabola P
+coeff_P = np.array([1,0,6])
 
-a=[]
-b=[]
-x=-3
-while(x<=3):
-    y=(x**2+6)
-    a.append(x)
-    b.append(y)
-    x= x+0.01
-fig= plt.figure()
-axes=fig.add_subplot(111)
-axes.plot(a,b,label="Parabola C")
+#defining tangent line
+tl = np.array([2,-1,-5])
 
-P = np.array([[1],[7]])
+#plotting points
 plot_point(P,"P")
 
-plot_line_from_eqn(slope=2, intercept=5, labelstr="Tangent Line")
+#plotting parabola P
+plot_parabola(coeff_P,labelstr="Parabola P")
+
+#plotting tangent line
+plot_line(tl, labelstr="Tangent Line")
 
 plt.xlabel('$x$');plt.ylabel('$y$')
 plt.legend(loc='best');plt.grid()
