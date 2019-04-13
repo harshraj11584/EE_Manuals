@@ -1,29 +1,31 @@
-import numpy as np 
+import numpy as np
+import math
 import matplotlib.pyplot as plt
+from funcs import *
+#setting up plot
+fig = plt.figure()
+ax = fig.add_subplot(111, aspect='equal')
 
-def plot_line_from_eqn(slope, intercept , labelstr):
-    axes = plt.gca()
-    axes.set_xlim([-3,3])
-    axes.set_ylim([-3,3])
-    x_vals = np.array(axes.get_xlim())*1000
-    y_vals = intercept + slope * x_vals
-    plt.plot(x_vals, y_vals, label=labelstr)
+#define points
+T = np.array([2,1])
 
-def plot_point(A,s):
-	plt.plot(A[0],A[1],'o')
-	plt.annotate(s,xy=(A[0],A[1]))
-
-fig, ax = plt.subplots()
+#define centre and radius for circle C
 c=np.array([1,0])
 r=2**0.5
-ax.add_patch(plt.Circle(c, r, color='r', alpha=1,fill=False,label="Circle C"))
 
-T = np.array([[2],[1]])
+#define tangent line
+L = np.array([1,1,3])
+
+#plot points
 plot_point(T,"T")
-plot_line_from_eqn(slope=-1,intercept=3,labelstr="Tangent T")
 
-ax.set_aspect('equal', adjustable='datalim')
-ax.plot()   #Causes an autoscale update.
+#plot line
+plot_line(L,"Tangent T")
+
+#plot circle C1
+plot_circle(ax,c,r,"Circle C1")
+
+ax.plot()
 plt.xlabel('$x$');plt.ylabel('$y$')
 plt.legend(loc='best');plt.grid()
 plt.show()
