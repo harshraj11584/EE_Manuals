@@ -4,7 +4,7 @@ from funcs import *
 import numpy as np
 
 #creating x,y for 3D plotting
-xx, yy = np.meshgrid([-2,2], [-2,2])
+xx, yy = np.meshgrid([-1,7], [-1,7])
 #setting up plot
 fig = plt.figure()
 ax = fig.add_subplot(111,projection='3d',aspect='equal')
@@ -23,6 +23,7 @@ def cross_product(A,B):
 x1=np.array([1,1,1])
 x2=np.array([0,1,2])
 y =np.array([6,0,0])
+w =np.array([5,2,-1])
 
 #defining plane P
 n1 = cross_product(x1,x2).reshape((3,1))
@@ -32,14 +33,12 @@ c1 = 0
 z1 = ((c1-n1[0,0]*xx-n1[1,0]*yy)*1.0)/(n1[2,0]*1.0)
 
 #plotting points
-ax.scatter(x1[0],x1[1],x1[2],'o',label="Point x1")
-ax.scatter(x2[0],x2[1],x2[2],'o',label="Point x2")
 ax.scatter(y[0],y[1],y[2],'o',label="Point y")
+ax.scatter(w[0],w[1],w[2],'o',label="Point w")
 
 #plotting lines
-plt.plot([0,x1[0]],[0,x1[1]],[0,x1[2]],label="Vector x1")
-plt.plot([0,x2[0]],[0,x2[1]],[0,x2[2]],label="Vector x2")
 plt.plot([0,y[0]],[0,y[1]],[0,y[2]],label="Vector y")
+plt.plot([0,w[0]],[0,w[1]],[0,w[2]],label="Vector w")
 
 #plotting plane
 ax.plot_surface(xx, yy, z1, color='r',alpha=0.2)
@@ -48,8 +47,7 @@ ax.plot_surface(xx, yy, z1, color='r',alpha=0.2)
 ax.set_xlim([-2,7])
 ax.set_ylim([-2,2])
 ax.set_zlim([-2,4])
-plt.xlabel('$x$')
-plt.ylabel('$y$')
+plt.xlabel('$x$');plt.ylabel('$y$')
 plt.legend(loc='best')
 plt.grid()
 plt.show()

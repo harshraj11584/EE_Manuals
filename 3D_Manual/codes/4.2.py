@@ -41,6 +41,8 @@ print("Vector B=",B)
 print("Cross Product= \n",cp)
 
 #show plot
-plt.xlabel('$x$');plt.ylabel('$y$')
-plt.legend(loc='best');plt.grid()
+plt.xlabel('$x$')
+plt.ylabel('$y$')
+plt.legend(loc='best')
+plt.grid()
 plt.show()

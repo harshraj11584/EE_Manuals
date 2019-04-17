@@ -30,6 +30,8 @@ print("Vector B=",B)
 print("Vector u=",u)
 
 #show plot
-plt.xlabel('$x$');plt.ylabel('$y$')
-plt.legend(loc='best');plt.grid()
+plt.xlabel('$x$')
+plt.ylabel('$y$')
+plt.legend(loc='best')
+plt.grid()
 plt.show()
