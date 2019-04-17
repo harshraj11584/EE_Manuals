@@ -44,9 +44,6 @@ plt.plot([0,w[0]],[0,w[1]],[0,w[2]],label="Vector w")
 ax.plot_surface(xx, yy, z1, color='r',alpha=0.2)
 
 #show plot
-ax.set_xlim([-2,7])
-ax.set_ylim([-2,2])
-ax.set_zlim([-2,4])
 plt.xlabel('$x$');plt.ylabel('$y$')
 plt.legend(loc='best')
 plt.grid()
