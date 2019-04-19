@@ -311,9 +311,10 @@ import matplotlib.pyplot as plt
 #setting up plot
 fig = plt.figure()
 ax = fig.add_subplot(111,projection='3d',aspect='auto')
-ax.scatter(pca_data[:int(len(pca_data)/2),0],pca_data[:int(len(pca_data)/2),1],color='r',alpha=0.3)
-ax.scatter(pca_data[int(len(pca_data)/2):,0],pca_data[int(len(pca_data)/2):,1],color='b',alpha=0.3)
-
+ax.scatter(pca_data[:int(len(pca_data)/2),0],pca_data[:int(len(pca_data)/2),1],pca_data[:int(len(pca_data)/2),2],color='r',alpha=0.3,label="Target Present")
+ax.scatter(pca_data[int(len(pca_data)/2):,0],pca_data[int(len(pca_data)/2):,1],pca_data[int(len(pca_data)/2):,2],color='b',alpha=0.3,label="Target Absent")
+plt.legend()
+plt.grid()
 
 num_vec_to_keep = 2
 print("Keeping",num_vec_to_keep,"dimensions")
@@ -338,8 +339,10 @@ import matplotlib.pyplot as plt
 #setting up plot
 fig = plt.figure()
 ax = fig.add_subplot(111,aspect='equal')
-ax.scatter(pca_data[:int(len(pca_data)/2),0],pca_data[:int(len(pca_data)/2),1],color='r',alpha=0.3)
-ax.scatter(pca_data[int(len(pca_data)/2):,0],pca_data[int(len(pca_data)/2):,1],color='b',alpha=0.3)
+ax.scatter(pca_data[:int(len(pca_data)/2),0],pca_data[:int(len(pca_data)/2),1],color='r',alpha=0.3,label="Target Present")
+ax.scatter(pca_data[int(len(pca_data)/2):,0],pca_data[int(len(pca_data)/2):,1],color='b',alpha=0.3,label="Target Absent")
+plt.legend()
+plt.grid()
 
 
 plt.show()
