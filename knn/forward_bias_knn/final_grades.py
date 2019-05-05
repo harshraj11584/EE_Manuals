@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-data = pd.read_excel('input.xlsx')   #reading input
+data = pd.read_excel('IDP_3025.xlsx')   #reading input
 df1 = data.loc[:,"Total" or "Marks"]    #storing marks column
 x = np.array(df1)
 
@@ -71,4 +71,4 @@ for i in range(N):
     if X[i][1] == 7:
         grades.append('A')
 data['Grades'] = grades
-data.to_excel('grades.xlsx',index = False)  #writing to file
+data.to_excel('IDP_3025_grades.xlsx',index = False)  #writing to file
