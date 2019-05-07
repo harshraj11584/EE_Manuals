@@ -3,8 +3,6 @@ from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 from sklearn import svm
 from sklearn import mixture 
-import matplotlib.pyplot as plt
-from funcs import *
 
 #setting up plot
 fig = plt.figure()
